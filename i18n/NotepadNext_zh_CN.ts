@@ -869,7 +869,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.ui" line="17"/>
-        <source>Notepad Next[*]</source>
+        <source>Notepad Next 大数据竞赛专版[*]</source>
         <translatorcomment>【不译】</translatorcomment>
         <translation></translation>
     </message>
@@ -1496,7 +1496,7 @@
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.ui" line="727"/>
         <source>About Notepad Next</source>
-        <translation>关于 Notepad Next</translation>
+        <translation>关于 Notepad Next大数据竞赛版</translation>
     </message>
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.ui" line="738"/>
