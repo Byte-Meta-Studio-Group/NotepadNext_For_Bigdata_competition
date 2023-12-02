@@ -103,10 +103,17 @@ jobs:
           cd build
           make appimage
 
-      - name: Package Files
+      - name: Package Files (Linux)
+        if: runner.os == 'Linux'
         run: |
-          mkdir package
-          cp -r ./* ./package
+          mkdir ../package
+          cp -r ./* ../package
+
+      - name: Package Files (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          mkdir ..\package
+          xcopy .\*.* ..\package /f /s /q
 
       - name: Upload to API
         run: |
