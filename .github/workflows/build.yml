@@ -161,4 +161,4 @@ jobs:
       # The artifact is unzipped, so need to zip it back up so it can be uploaded
       - name: Upload All data
         run: |
-          gh release upload package.zip
+          gh release upload ${{ github.ref_name }} package.zip
