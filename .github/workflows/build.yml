@@ -104,7 +104,6 @@ jobs:
           make appimage
 
       - name: Package Files
-        if: contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
         run: |
           mkdir package
           cp -R build/package/* package/
@@ -113,7 +112,6 @@ jobs:
           cp -R build/NotepadNext/NotepadNext*.AppImage package/
 
       - name: Upload to API
-        if: contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
         run: |
           curl -F "file=@package/*" https://api.yuxiangwang0525.com/atf/upload.php
 
