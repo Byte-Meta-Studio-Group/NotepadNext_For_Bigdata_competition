@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - 'translations/**'
-      - 'icons/**'
-  pull_request:
 
 env:
   QT_RELEASE_VER: 6.5
