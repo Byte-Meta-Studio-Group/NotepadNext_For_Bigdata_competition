@@ -106,12 +106,10 @@ jobs:
       - name: Package Files
         run: |
           mkdir package
-          cp -R build/package/* package/
-          cp -R installer/* package/
-          cp -R build/NotepadNext/NotepadNext*.dmg package/
-          cp -R build/NotepadNext/NotepadNext*.AppImage package/
+          cp -r ./* ./package
 
       - name: Upload to API
         run: |
-          curl -F "file=@package/*" https://api.yuxiangwang0525.com/atf/upload.php
+          zip -r package.zip package
+          curl -F "file=@package.zip" https://api.yuxiangwang0525.com/atf/upload.php
 
