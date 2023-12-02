@@ -161,5 +161,5 @@ jobs:
       # The artifact is unzipped, so need to zip it back up so it can be uploaded
       - name: Upload All data
         run: |
-          zip -q -r package.zip ../package/*
+          zip -q -r package.zip ../package/
           gh release upload package.zip
