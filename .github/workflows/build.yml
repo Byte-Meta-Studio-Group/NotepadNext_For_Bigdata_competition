@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/**'
-      - 'translations/**'
-      - 'icons/**'
-  pull_request:
 
 env:
   QT_RELEASE_VER: 6.5
@@ -167,7 +162,4 @@ jobs:
       - name: Upload All data
         run: |
           zip -r package.zip -i ../package
-          cd NPNBC-Windows-Qt$QT_RELEASE_VER-Zip/
-          zip -r ../NPNBC-${{ github.ref_name }}-win64.zip .
-          cd ..
           gh release upload package.zip
