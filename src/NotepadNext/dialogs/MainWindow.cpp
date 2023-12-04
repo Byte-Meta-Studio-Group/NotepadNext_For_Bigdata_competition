@@ -670,7 +670,7 @@ MainWindow::MainWindow(NotepadNextApplication *app) :
                                     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
                                     GNU General Public License for more details.</p>
                                     <p>You should have received a copy of the GNU General Public License
-                                    along with this program. If not, see &lt;<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</p>)")
+                                    along with this program. If not, see &lt;<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</p><p>这是字节元工作室群团队为青岛电子学校编译的Notepad Next大数据竞赛专版。用于仿真模拟大数据竞赛的云平台的编译器。想了解更多,请访问<a href="http://bytemetasg.top">字节元工作室群官方网站</a></p>)")
                                 .arg(QApplication::applicationDisplayName(), APP_VERSION, APP_DISTRIBUTION, QStringLiteral(APP_COPYRIGHT).toHtmlEscaped()));
     });
 
