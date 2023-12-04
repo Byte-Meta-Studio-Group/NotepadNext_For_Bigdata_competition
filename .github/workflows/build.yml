@@ -140,7 +140,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
 
-    if: github.repository == 'Byte-Meta-Studio-Group/NotepadNext_For_Bigdata_competition'
+    if: github.repository == 'Byte-Meta-Studio-Group/NotepadNext_For_Bigdata_competition' && github.event_name == 'push'
     
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
