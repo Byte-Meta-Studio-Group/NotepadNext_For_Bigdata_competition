@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    tags:
+      - '*'
+  pull_request:
 
 env:
   QT_RELEASE_VER: 6.5
@@ -29,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: true
 
@@ -58,7 +61,7 @@ jobs:
       - name: Setup Linux
         if: runner.os == 'Linux'
         run: |
-          echo "DISTRIBUTION=NPNBC" >> "$GITHUB_ENV"
+          echo "DISTRIBUTION=AppImage" >> "$GITHUB_ENV"
           sudo apt-get install libxkbcommon-dev libxkbcommon-x11-0 fuse libxcb-cursor-dev
 
       - name: Run QMake
@@ -68,68 +71,69 @@ jobs:
           qmake ../src/NotepadNext.pro "DISTRIBUTION=$DISTRIBUTION"
 
       - name: Compile for Windows
-        if: runner.os == 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os == 'Windows'
         run: |
           cd build
           jom
 
       - name: Compile for Linux/macOS
-        if: runner.os != 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os != 'Windows'
         run: |
           cd build
           make -j${{ steps.cpu-cores.outputs.count }}
 
       - name: Create Windows zip Package
-        if: runner.os == 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os == 'Windows'
         run: |
           cd build
           jom package
 
       - name: Create Windows Installer
-        if: runner.os == 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os == 'Windows'
         run: |
           cd build
           jom installer
 
       - name: Create DMG
-        if: runner.os == 'macOS' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os == 'macOS'
         run: |
           cd build
           make dmg
 
       - name: Create AppImage
-        if: runner.os == 'Linux' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        if: runner.os == 'Linux'
         run: |
           cd build
           make appimage
 
       - name: Upload Windows zip Package
-        uses: actions/upload-artifact@v2
-        if: runner.os == 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        uses: actions/upload-artifact@v3
+        if: runner.os == 'Windows'
         with:
-          name: NPNBC-Windows-Qt${{ matrix.config.qt_version }}-Zip
+          name: NotepadNext-Windows-Qt${{ matrix.config.qt_version }}-Zip
           path: ${{ github.workspace }}/build/package/
 
       - name: Upload Windows Installer
-        uses: actions/upload-artifact@v2
-        if: runner.os == 'Windows' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        uses: actions/upload-artifact@v3
+        if: runner.os == 'Windows'
         with:
-          name: NPNBC-Windows-Qt${{ matrix.config.qt_version }}-Installer
+          name: NotepadNext-Windows-Qt${{ matrix.config.qt_version }}-Installer
           path: ${{ github.workspace }}/installer/NotepadNext*.exe
 
       - name: Upload macOS dmg
-        uses: actions/upload-artifact@v2
-        if: runner.os == 'macOS' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        uses: actions/upload-artifact@v3
+        if: runner.os == 'macOS'
         with:
-          name: NPNBC-macOS-Qt${{ matrix.config.qt_version }}
+          name: NotepadNext-macOS-Qt${{ matrix.config.qt_version }}
           path: ${{ github.workspace }}/build/NotepadNext/NotepadNext*.dmg
 
       - name: Upload Linux AppImage
-        uses: actions/upload-artifact@v2
-        if: runner.os == 'Linux' && contains(github.event.head_commit.modified, 'src/') || contains(github.event.head_commit.modified, 'translations/') || contains(github.event.head_commit.modified, 'icons/')
+        uses: actions/upload-artifact@v3
+        if: runner.os == 'Linux'
         with:
-          name: NPNBC-Linux-Qt${{ matrix.config.qt_version }}-AppImage
+          name: NotepadNext-Linux-Qt${{ matrix.config.qt_version }}-AppImage
           path: ${{ github.workspace }}/build/NotepadNext/NotepadNext*.AppImage
+
 
   github:
     name: Draft GitHub Release
