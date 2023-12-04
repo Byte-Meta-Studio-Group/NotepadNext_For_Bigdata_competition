@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     // Set these since other parts of the app references these
     QApplication::setOrganizationName("NotepadNext");
     QApplication::setApplicationName("NotepadNext");
-    QGuiApplication::setApplicationDisplayName("Notepad Next");
+    QGuiApplication::setApplicationDisplayName("Notepad Next大数据竞赛专版");
 #ifdef Q_OS_UNIX
     // Unix doesn't provide an application version by default
     QGuiApplication::setApplicationVersion(APP_VERSION);
