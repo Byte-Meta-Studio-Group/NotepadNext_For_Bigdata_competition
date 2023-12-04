@@ -871,7 +871,7 @@
         <location filename="../src/NotepadNext/dialogs/MainWindow.ui" line="17"/>
         <source>Notepad Next 大数据竞赛专版[*]</source>
         <translatorcomment>【不译】</translatorcomment>
-        <translation></translation>
+        <translation>Notepad Next 大数据竞赛专版[*]</translation>
     </message>
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.ui" line="33"/>
@@ -1727,13 +1727,13 @@
         <location filename="../src/NotepadNext/dialogs/MainWindow.cpp" line="917"/>
         <location filename="../src/NotepadNext/dialogs/MainWindow.cpp" line="1015"/>
         <source>Save file &lt;b&gt;%1&lt;/b&gt;?</source>
-        <translation>保存文件 &lt;b&gt;%1&lt;/b&gt;？</translation>
+        <translation>保存文件(请记得在云平台运行时检查编码) &lt;b&gt;%1&lt;/b&gt;？</translation>
     </message>
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.cpp" line="918"/>
         <location filename="../src/NotepadNext/dialogs/MainWindow.cpp" line="1016"/>
         <source>Save File</source>
-        <translation>保存文件</translation>
+        <translation>保存文件(请记得在云平台运行时检查编码)</translation>
     </message>
     <message>
         <location filename="../src/NotepadNext/dialogs/MainWindow.cpp" line="971"/>
