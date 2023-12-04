@@ -159,6 +159,27 @@ jobs:
           zip -q -r package.zip ../package/
 
       # The artifact is unzipped, so need to zip it back up so it can be uploaded
-      - name: Upload All data
-        run: |
-          gh release upload ${{ github.ref_name }} package.zip
+      #- name: Upload All data
+      #  run: |
+      #    gh release upload ${{ github.ref_name }} package.zip
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Windows Release Asset
+        id: upload_windows_release_asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./package.zip
+          asset_name: package.zip
+          asset_content_type: application/octet-stream
