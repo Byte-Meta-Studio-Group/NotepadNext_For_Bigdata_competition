@@ -1,6 +1,7 @@
 # Notepad Next
 
 ![Build Notepad Next](https://github.com/dail8859/NotepadNext/workflows/Build%20Notepad%20Next/badge.svg)
+[![Build NPNBC](https://github.com/Byte-Meta-Studio-Group/NotepadNext_For_Bigdata_competition/actions/workflows/build.yml/badge.svg)](https://github.com/Byte-Meta-Studio-Group/NotepadNext_For_Bigdata_competition/actions/workflows/build.yml)
 
 A cross-platform, reimplementation of Notepad++.
 
